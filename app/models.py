@@ -1,6 +1,11 @@
 from flask_login import UserMixin
 from . import login_manager
 
+class LoginForm(FlaskForm):
+    email = StringField('Your Email Address',validators=[Required(),Email()])
+    password = PasswordField('Password',validators =[Required()])
+    remember = BooleanField('Remember me')
+    submit = SubmitField('Sign In')
 
 class User(UserMixin,db.Model):
     __tablename__ = 'users'
