@@ -10,23 +10,24 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 class User(UserMixin,db.Model):
-    __tablename__ = 'users'
-
+    __tablename__ = 'pitchusers'
+              
     id = db.Column(db.Integer,primary_key = True)
     username = db.Column(db.String(255),index = True)
     email = db.Column(db.String(255),unique = True,index = True)
-    role_id = db.Column(db.Integer,db.ForeignKey('roles.id'))
-    password_hash = db.Column(db.String(255))
+    # role_id = db.Column(db.Integer,db.ForeignKey('roles.id'))
+    # password_hash = db.Column(db.String(255))
 
-    
+
 class Role(db.Model):
-    __tablename__ = 'roles'
-
+    __tablename__ = 'pitchroles'
+ 
     id = db.Column(db.Integer,primary_key = True)
     name = db.Column(db.String(255))
-
+    
     def __repr__(self):
         return f'User {self.name}'
+
     @property
     def password(self):
         raise AttributeError('You cannnot read the password attribute')
