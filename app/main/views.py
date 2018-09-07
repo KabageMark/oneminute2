@@ -13,7 +13,8 @@ from .import main
 
 @main.route("/home",methods=['GET','POST'])
 def home():
-    form = pitchForm()    
+    pitching=[]
+    form = pitchForm(pitching)
     pitch = form.pitch.data
     category = form.category.data
     comments = form.comments.data
