@@ -1,0 +1,97 @@
+
+
+{% block content %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">  
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+ 
+
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+                <header class="mdl-layout__header">
+                  <div class="mdl-layout__header-row">
+                    <!-- Title -->
+                    <span class="mdl-layout-title">PITCH</span>
+                    <!-- Add spacer, to align navigation to the right -->
+                    <div class="mdl-layout-spacer"></div>
+                    <!-- Navigation. We hide it in small screens. -->
+                    <nav class="mdl-navigation mdl-layout--large-screen-only">
+                      <a class="mdl-navigation__link" href="http://127.0.0.1:5000/home">sign in</a>
+                      <a class="mdl-navigation__link" href="">sign up</a>
+                    </nav>
+                  </div>
+                </header>
+               <main class="mdl-layout__content">
+                <div class="container">
+                    <div class="page-content">
+                        <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                                <div class="mdl-tabs__tab-bar">
+                                    <a href="#General-panel" class="mdl-tabs__tab is-active">General</a>
+                                    <a href="#business-panel" class="mdl-tabs__tab">business</a>
+                                    <a href="#sports-panel" class="mdl-tabs__tab">love</a>
+                                    <a href="#technology-panel" class="mdl-tabs__tab">investment</a>
+                                    <a href="#science-panel" class="mdl-tabs__tab">science</a>
+                                </div>
+                                
+                                <div class="mdl-tabs__panel is-active" id="General-panel">
+                                    <div class="form-group" placeholder="Write you pitch here">
+                                        {{form.pitch.label}}
+                                        {{form.pitch(class="form-control") }}
+                                    </div>
+                                    <div class="form-group" placeholder="Category" id="categoryform">
+                                        {{form.category.label}}
+                                        {{form.category(class="form-control" )}}
+                                       </div>
+                                   </fieldset>
+                                    <select name="categorylist" form="categoryform">
+                                          <option value="love">love</option>
+                                          <option value="business">business</option>
+                                          <option value="sales">sales</option>
+                                          <option value="keynote">keynote</option>
+                                    </select>
+                                   
+                                      <div class="form-group" placeholder="Category" id="categoryform">
+                                          {{form.comments.label}}
+                                          {{form.comments(class="form-control" )}}
+                                         </div>
+                                      
+                                   <div class="form-group">
+                                       {{form.submit(class="btn btn-Success" )}}
+                                       </div>
+                               </form>  
+                               
+                               <p>{{pitch}}</p>
+                            
+                                </div>
+
+                                <div class="mdl-tabs__panel" id="business-panel">
+                                  <ul>
+                                    
+                                  </ul>
+                     
+                                </div>
+                                <div class="mdl-tabs__panel" id="sports-panel">
+                                  <ul>
+                                    
+                                  </ul>
+                    
+                                </div>
+                                <div class="mdl-tabs__panel" id="technology-panel">
+                                    <ul>
+                                      
+                                    </ul>
+                                    
+                                  </div>
+                                  <div class="mdl-tabs__panel" id="science-panel">
+                                      <ul>
+                                        
+                                      </ul>
+                                      </div>
+                              </div> 
+                              </div>       
+                    {%endblock%}
+             </div>
+        </div>
+    </main>
