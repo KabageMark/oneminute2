@@ -11,7 +11,7 @@ from .import main
 
 #      return render_template('home.html')
 
-@main.route("/home",methods=['GET','POST'])
+@main.route("/",methods=['GET','POST'])
 def home():
     pitching=[]
     form = pitchForm(pitching)
@@ -21,4 +21,4 @@ def home():
     print(pitch)
     print(category)
     print(comments) 
-    return render_template('home.html',pitch = pitch, category = category,comments = comments,form = form)
+    return render_template('index.html',pitch = pitch, category = category,comments = comments,form = form)
