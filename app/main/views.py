@@ -4,4 +4,10 @@
 # from ..models import User
 # from .forms import LoginForm,RegistrationForm
 # from .. import db
-# from .import main
+from .import main
+
+@main.route('/home')
+def index():
+
+     return render_template('home.html')
+
