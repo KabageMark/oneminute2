@@ -20,4 +20,4 @@ def home():
     print(pitch)
     print(category)
     print(comments) 
-    return render_template('home.html',pitch=pitch, category=category,comments=comments,form = form)
+    return render_template('home.html',pitch = pitch, category = category,comments = comments,form = form)

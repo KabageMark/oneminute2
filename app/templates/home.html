@@ -34,13 +34,36 @@
                                     <a href="#technology-panel" class="mdl-tabs__tab">investment</a>
                                     <a href="#science-panel" class="mdl-tabs__tab">science</a>
                                 </div>
-                                <center>
+                                
                                 <div class="mdl-tabs__panel is-active" id="General-panel">
-                                  <ul>
-                                    
-                                  </ul>
+                                    <div class="form-group" placeholder="Write you pitch here">
+                                        {{form.pitch.label}}
+                                        {{form.pitch(class="form-control") }}
+                                    </div>
+                                    <div class="form-group" placeholder="Category" id="categoryform">
+                                        {{form.category.label}}
+                                        {{form.category(class="form-control" )}}
+                                       </div>
+                                   </fieldset>
+                                    <select name="categorylist" form="categoryform">
+                                          <option value="love">love</option>
+                                          <option value="business">business</option>
+                                          <option value="sales">sales</option>
+                                          <option value="keynote">keynote</option>
+                                    </select>
+                                   
+                                      <div class="form-group" placeholder="Category" id="categoryform">
+                                          {{form.comments.label}}
+                                          {{form.comments(class="form-control" )}}
+                                         </div>
+                                      
+                                   <div class="form-group">
+                                       {{form.submit(class="btn btn-Success" )}}
+                                       </div>
+                               </form>  
                      
                                 </div>
+
                                 <div class="mdl-tabs__panel" id="business-panel">
                                   <ul>
                                     
