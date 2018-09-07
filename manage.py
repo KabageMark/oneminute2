@@ -7,6 +7,7 @@ from app.models import User,Role
 app = create_app('development')
 
 
+
 manager = Manager(app)
 migrate = Migrate(app,db)
 
@@ -27,4 +28,5 @@ def make_shell_context():
 
 
 if __name__ == '__main__':
+    app.secret_key = 'SECRET_KEY'
     manager.run()
