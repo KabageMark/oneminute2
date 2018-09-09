@@ -32,11 +32,26 @@ class User(UserMixin,db.Model):
     def __repr__(self):
         return f'User {self.username}'
 
+
+
+
 class Pitch(UserMixin,db.Model):
-    __tablename__ = 'pitchpitches'
-              
-    id = db.Column(db.Integer,primary_key = True)
-    pitch = db.Column(db.String(255)) 
-    category = db.Column(db.String(255))
-    comments = db.Column(db.String(255))
+   __tablename__='pitchpitches'
+
+   id = db.Column(db.Integer,primary_key=True)
+   title = db.Column(db.String(255))
+   pitch = db.Column(db.String(255))
+   category = db.Column(db.String(255))
+   user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
+
+
+
+   def save_pitch(self):
+       db.session.add(self)
+       db.session.commit()
+
+   @classmethod
+   def get_pitch(cls,id):
+       posts = Pitch.query.all()
+       return posts
    
