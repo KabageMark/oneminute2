@@ -6,21 +6,6 @@ from .forms import pitchForm,LoginForm,RegistrationForm
 from .. import db
 from .import main
 
-  
-@main.route("/home/",methods=['GET','POST'])
-def home():
-    form = pitchForm()
-    pitch = form.pitch.data
-    category = form.category.data
-    comments = form.comments.data
-    print(pitch)
-    print(category)
-    print(comments) 
-    return render_template('home.html',pitch = pitch, category = category,comments = comments,form = form)
-
-
-
-
 @main.route('/',methods=['GET','POST'])
 def login():
     login_form = LoginForm()
@@ -33,7 +18,7 @@ def login():
         flash('Invalid username or Password')
 
     title = "pitch login"
-    return render_template('index.html',form = login_form,title=title)
+    return render_template('index.html',form=login_form,title=title)
 
 @main.route('/logout')
 @login_required
@@ -43,13 +28,25 @@ def logout():
     return redirect(url_for("main.index"))    
 
 
-@main.route('/home/register',methods = ["GET","POST"])
+@main.route('/register',methods = ["GET","POST"])
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
         user = User(email = form.email.data, username = form.username.data,password = form.password.data)
         db.session.add(user)
         db.session.commit()
-        return redirect(url_for('.login'))
+        return redirect(url_for('main.home'))
         title = "New Account"
-    return render_template('register.html',form = form)
+    return render_template('register.html',form=form)
+    
+
+@main.route("/home/",methods=['GET','POST'])
+def home():
+    form = pitchForm()
+    pitch = form.pitch.data
+    category = form.category.data
+    comments = form.comments.data
+    print(pitch)
+    print(category)
+    print(comments) 
+    return render_template('home.html',pitch=pitch, category=category,comments=comments,form=form)   

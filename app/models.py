@@ -17,6 +17,7 @@ class User(UserMixin,db.Model):
     email = db.Column(db.String(255),unique = True,index = True)
     password_hash = db.Column(db.String(255))
     pass_secure = db.Column(db.String(255))
+    
     @property
     def password(self):
         raise AttributeError('You cannnot read the password attribute')
