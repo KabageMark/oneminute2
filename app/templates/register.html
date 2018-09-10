@@ -55,17 +55,24 @@
              <br>
              {{form.password (class="form-control")}}
          </div>
-        </fieldset>
-        <div class="form-group col-xs-3">
+
+         <div class="form-group">
+            {{form.password_confirm.label}}
+            <br>
+            {{form.password_confirm(class="form-control")}}
+        </div>
+        
+        <div>
             {{form.submit (class="btn")}}
             </div>
     </form>
 </div>
 
-<div class="border-top pt-3">
+<div>
      <small class="text-muted">
        Already have an account? <a class="ml-2" href="{{url_for ('main.login')}}">sign in </a>
      </small>
 </div>
+</fieldset>
 
 {% endblock %} 

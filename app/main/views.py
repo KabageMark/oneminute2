@@ -1,11 +1,22 @@
 from flask_login import login_required
 from flask import render_template,redirect,url_for, flash,request
 from flask_login import login_user
-
+from ..models import User,Pitch
 from .forms import pitchForm,LoginForm,RegistrationForm
 from .. import db
 from .import main
 
+@main.route('/register',methods = ["GET","POST"])
+def register():
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        user = User(email = form.email.data, username = form.username.data,password_hash  = form.password.data)
+        user.set_password(form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        return redirect(url_for('main.login'))
+        title = "New Account"
+    return render_template('register.html',form = form)
   
 @main.route("/home/",methods=['GET','POST'])
 def home():
@@ -43,13 +54,4 @@ def logout():
     return redirect(url_for("main.index"))    
 
 
-@main.route('/register',methods = ["GET","POST"])
-def register():
-    form = RegistrationForm()
-    if form.validate_on_submit():
-        user = User(email = form.email.data, username = form.username.data,password = form.password.data)
-        db.session.add(user)
-        db.session.commit()
-        return redirect(url_for('main.login'))
-        title = "New Account"
-    return render_template('register.html',form = form)
+

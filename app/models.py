@@ -16,14 +16,13 @@ class User(UserMixin,db.Model):
     username = db.Column(db.String(255),index = True)
     email = db.Column(db.String(255),unique = True,index = True)
     password_hash = db.Column(db.String(255))
-    pass_secure = db.Column(db.String(255))
-    
+       
     @property
     def password(self):
         raise AttributeError('You cannnot read the password attribute')
 
-    @password.setter
-    def password(self, password):
+    
+    def set_password(self, password):
 
         self.password_hash = generate_password_hash(password)
 
@@ -34,7 +33,7 @@ class User(UserMixin,db.Model):
     def __repr__(self):
         return f'User {self.username}'
 
-
+    
 
 
 class Pitch(UserMixin,db.Model):
