@@ -1,10 +1,25 @@
 from flask_login import login_required
 from flask import render_template,redirect,url_for, flash,request
 from flask_login import login_user
-from ..models import User
+
 from .forms import pitchForm,LoginForm,RegistrationForm
 from .. import db
 from .import main
+
+  
+@main.route("/home/",methods=['GET','POST'])
+def home():
+    form = pitchForm()
+    pitch = form.pitch.data
+    category = form.category.data
+    comments = form.comments.data
+    print(pitch)
+    print(category)
+    print(comments) 
+    return render_template('home.html',pitch = pitch, category = category,comments = comments,form = form)
+
+
+
 
 @main.route('/',methods=['GET','POST'])
 def login():
@@ -18,7 +33,7 @@ def login():
         flash('Invalid username or Password')
 
     title = "pitch login"
-    return render_template('index.html',form=login_form,title=title)
+    return render_template('index.html',form = login_form,title=title)
 
 @main.route('/logout')
 @login_required
@@ -35,18 +50,6 @@ def register():
         user = User(email = form.email.data, username = form.username.data,password = form.password.data)
         db.session.add(user)
         db.session.commit()
-        return redirect(url_for('main.home'))
+        return redirect(url_for('main.login'))
         title = "New Account"
-    return render_template('register.html',form=form)
-    
-
-@main.route("/home/",methods=['GET','POST'])
-def home():
-    form = pitchForm()
-    pitch = form.pitch.data
-    category = form.category.data
-    comments = form.comments.data
-    print(pitch)
-    print(category)
-    print(comments) 
-    return render_template('home.html',pitch=pitch, category=category,comments=comments,form=form)   
+    return render_template('register.html',form = form)

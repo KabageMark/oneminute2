@@ -10,7 +10,7 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 class User(UserMixin,db.Model):
-    __tablename__ = 'pitchusers'
+    __tablename__ = 'users'
               
     id = db.Column(db.Integer,primary_key = True)
     username = db.Column(db.String(255),index = True)
@@ -24,6 +24,7 @@ class User(UserMixin,db.Model):
 
     @password.setter
     def password(self, password):
+
         self.password_hash = generate_password_hash(password)
 
 
@@ -37,7 +38,7 @@ class User(UserMixin,db.Model):
 
 
 class Pitch(UserMixin,db.Model):
-   __tablename__='pitchpitches'
+   __tablename__='pitches'
 
    id = db.Column(db.Integer,primary_key=True)
    title = db.Column(db.String(255))
