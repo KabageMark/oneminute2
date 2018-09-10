@@ -17,17 +17,26 @@ def register():
         return redirect(url_for('main.login'))
         title = "New Account"
     return render_template('register.html',form = form)
+    
+
+@main.route("/home/",methods=['GET','POST'])
+def pitching():
+
+    form=pitchForm()
+
+    return render_template('home.html',form=form)
+
+
   
 @main.route("/home/",methods=['GET','POST'])
-def home():
-    form = pitchForm()
-    pitch = form.pitch.data
-    category = form.category.data
-    comments = form.comments.data
-    print(pitch)
-    print(category)
-    print(comments) 
-    return render_template('home.html',pitch = pitch, category = category,comments = comments,form = form)
+def postedpitch():
+    
+    business = Pitch.query.filter_by(category="business")
+    love = Pitch.query.filter_by(category="love")
+    investment = Pitch.query.filter_by(category="investment")
+    science = Pitch.query.filter_by(category="science")
+
+    return render_template('home.html',business = business, love = love,investment = investment,science = science)
 
 
 
@@ -50,6 +59,7 @@ def login():
 @login_required
 def logout():
     logout_user()
+
     flash('You have been successfully logged out')
     return redirect(url_for("main.index"))    
 

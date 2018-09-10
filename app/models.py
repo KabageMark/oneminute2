@@ -51,8 +51,8 @@ class Pitch(UserMixin,db.Model):
        db.session.add(self)
        db.session.commit()
 
-   @classmethod
-   def get_pitch(cls,id):
-       posts = Pitch.query.all()
-       return posts
+#    @classmethod
+#    def get_pitch(cls,id):
+#        posts = Pitch.query.all()
+#        return posts
    
