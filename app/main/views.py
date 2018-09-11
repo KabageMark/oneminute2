@@ -17,14 +17,14 @@ def register():
         return redirect(url_for('main.login'))
         title = "New Account"
     return render_template('register.html',form = form)
-    
 
-@main.route("/home/",methods=['GET','POST'])
+
+@main.route("/home/pitch",methods=['GET','POST'])
 def pitching():
 
     form=pitchForm()
 
-    return render_template('home.html',form=form)
+    return render_template('pitch.html',form=form)
 
 
   
@@ -36,7 +36,7 @@ def postedpitch():
     investment = Pitch.query.filter_by(category="investment")
     science = Pitch.query.filter_by(category="science")
 
-    return render_template('home.html',business = business, love = love,investment = investment,science = science)
+    return render_template('posted.html',business = business, love = love,investment = investment,science = science)
 
 
 
