@@ -23,34 +23,56 @@
                     </nav>
                   </div>
                 </header>
-               <main class="mdl-layout__content">
-                <div class="container">
-                    <div class="page-content">
-                        <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
-                                <div class="mdl-tabs__tab-bar">
-                                    <a href="#General-panel" class="mdl-tabs__tab is-active">General</a>
-                                    <a href="#business-panel" class="mdl-tabs__tab">business</a>
-                                    <a href="#sports-panel" class="mdl-tabs__tab">love</a>
-                                    <a href="#technology-panel" class="mdl-tabs__tab">investment</a>
-                                    <a href="#science-panel" class="mdl-tabs__tab">science</a>
-                                </div>
-                                
-                                <div class="mdl-tabs__panel is-active" id="General-panel">
-                                    <div class="form-group" placeholder="Write you pitch here">
-                                        
-                                    </div>
-                                    <div class="form-group" placeholder="Category" id="categoryform">
-                                        
-                                       </div>
-                                   </fieldset>
-                                      <div class="form-group" placeholder="Category" id="categoryform">
-                                        
-                                         </div>
-                                      
-                                   <div class="form-group">
-                                 
-                                       </div>
-                               </form>         
+
+                <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                        <div class="mdl-tabs__tab-bar">
+                            <a href="#love-panel" class="mdl-tabs__tab is-active">Love</a>
+                            <a href="#Business-panel" class="mdl-tabs__tab">Busines</a>
+                            <a href="#Science-panel" class="mdl-tabs__tab">Science</a>
+                            <a href="#Investment-panel" class="mdl-tabs__tab">Investment</a>
+                        </div>
+                      
+                        <div class="mdl-tabs__panel is-active" id="love-panel">
+                        <div class="jumbotron">
+                        <center><h1>have anything lovely to say...?</h1></center>    
+                        </div>       
+                        {% for love in love %}
+                        {{love.pitch}}
+                        <br>
+                        {% endfor %}
+                        
+                        </div>
+                        <div class="mdl-tabs__panel" id="Business-panel">
+                        <div class="jumbotron">
+                        <center><h1>What are you selling...?</h1></center>    
+                        </div>       
+                        {% for business in business %}
+                        {{business.pitch}}
+                        <br>
+                        {% endfor %}
+                        
+                        </div>
+                        <div class="mdl-tabs__panel" id="Science-panel">
+                        <div class="jumbotron">
+                        <center><h1>Spread the word of science...?</h1></center>  
+                        </div>   
+                        {% for science in science %}
+                        {{science.pitch}}
+                        <br>
+                        {% endfor %}
+                        
+                        </div>
+                        <div class="mdl-tabs__panel" id="Investment-panel">
+                        <div class="jumbotron">
+                        <center><h1>have anything to invest in...?</h1></center>     
+                        </div>   
+                        {% for investment in investment %}
+                        {{investment.pitch}}
+                        <br>
+                        {% endfor %}
+                        
+                              </div>
+                      </div>
                     {%endblock%}
              </div>
         </div>

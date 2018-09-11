@@ -31,7 +31,7 @@ class User(UserMixin,db.Model):
         return check_password_hash(self.password_hash,password)
 
     def __repr__(self):
-        return f'User {self.username}'
+        return f'User { self.username}'
 
     
 
@@ -43,6 +43,7 @@ class Pitch(UserMixin,db.Model):
    title = db.Column(db.String(255))
    pitch = db.Column(db.String(255))
    category = db.Column(db.String(255))
+   comments = db.Column(db.String(255))
    user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
 
 

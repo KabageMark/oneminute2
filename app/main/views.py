@@ -23,7 +23,10 @@ def register():
 def pitching():
 
     form=pitchForm()
-
+    if form.validate_on_submit():
+        pitch=Pitch(pitch=form.pitch.data,category=form.category.data,comments=form.comments.data)
+        pitch.save_pitch()
+        return redirect(url_for('main.postedpitch'))
     return render_template('pitch.html',form=form)
 
 
@@ -31,12 +34,12 @@ def pitching():
 @main.route("/home/",methods=['GET','POST'])
 def postedpitch():
     
-    business = Pitch.query.filter_by(category="business")
-    love = Pitch.query.filter_by(category="love")
-    investment = Pitch.query.filter_by(category="investment")
-    science = Pitch.query.filter_by(category="science")
+    business = Pitch.query.filter_by(category='business').all()
+    love = Pitch.query.filter_by(category='love').all()
+    investment = Pitch.query.filter_by(category='investment').all()
+    science = Pitch.query.filter_by(category='science').all()
 
-    return render_template('posted.html',business = business, love = love,investment = investment,science = science)
+    return render_template('posted.html',business=business,love=love,investment=investment,science=science)
 
 
 
@@ -48,7 +51,7 @@ def login():
         user = User.query.filter_by(email = login_form.email.data).first()
         if user is not None and user.verify_password(login_form.password.data):
             login_user(user,login_form.remember.data)
-            return redirect(request.args.get('next') or url_for('main.home'))
+            return redirect(request.args.get('next') or url_for('main.pitching'))
 
         flash('Invalid username or Password')
 
@@ -65,3 +68,4 @@ def logout():
 
 
 
+ 

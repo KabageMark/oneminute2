@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField , SubmitField,BooleanField
+from wtforms import StringField, PasswordField , SubmitField,BooleanField,RadioField
 from wtforms.validators import DataRequired,Required, Length , Email , EqualTo
 from ..models import User,Pitch
 
@@ -10,7 +10,7 @@ from ..models import User,Pitch
 class pitchForm(FlaskForm):
     pitch = StringField('Pitch',validators=[DataRequired()])
 
-    category = StringField('Category',validators=[DataRequired()])
+    category = RadioField('Category',choices=[("business","business"),("love","love"),("investment" ,"investment"),("science","science")],validators=[DataRequired()])
 
     comments = StringField('Comments')
 
