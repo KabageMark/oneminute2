@@ -1,8 +1,8 @@
 from flask_login import login_required
 from flask import render_template,redirect,url_for, flash,request
 from flask_login import login_user
-from ..models import User,Pitch
-from .forms import pitchForm,LoginForm,RegistrationForm
+from ..models import User,Pitch,Comment
+from .forms import pitchForm,LoginForm,RegistrationForm,commentForm
 from .. import db
 from .import main
 
@@ -24,7 +24,7 @@ def pitching():
 
     form=pitchForm()
     if form.validate_on_submit():
-        pitch=Pitch(pitch=form.pitch.data,category=form.category.data,comments=form.comments.data)
+        pitch=Pitch(pitch=form.pitch.data,category=form.category.data)
         pitch.save_pitch()
         return redirect(url_for('main.postedpitch'))
     return render_template('pitch.html',form=form)
@@ -33,13 +33,21 @@ def pitching():
   
 @main.route("/home/",methods=['GET','POST'])
 def postedpitch():
+    Comment_form=commentForm()
+    comment = Comment.query.filter_by(comment='').all()
+    username = Comment.query.filter_by(username='').all()
     
     business = Pitch.query.filter_by(category='business').all()
     love = Pitch.query.filter_by(category='love').all()
     investment = Pitch.query.filter_by(category='investment').all()
     science = Pitch.query.filter_by(category='science').all()
 
-    return render_template('posted.html',business=business,love=love,investment=investment,science=science)
+    return render_template('posted.html',business=business,love=love,investment=investment,science=science,Comment_form=Comment_form,comment=comment,username=username)
+
+
+
+
+
 
 
 
@@ -57,6 +65,10 @@ def login():
 
     title = "pitch login"
     return render_template('index.html',form = login_form,title=title)
+
+
+
+
 
 @main.route('/logout')
 @login_required

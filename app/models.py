@@ -43,8 +43,9 @@ class Pitch(UserMixin,db.Model):
    title = db.Column(db.String(255))
    pitch = db.Column(db.String(255))
    category = db.Column(db.String(255))
-   comments = db.Column(db.String(255))
+   comments = db.relationship('Comment',backref='pitch',lazy='dynamic')
    user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
+   
 
 
 
@@ -52,8 +53,9 @@ class Pitch(UserMixin,db.Model):
        db.session.add(self)
        db.session.commit()
 
-#    @classmethod
-#    def get_pitch(cls,id):
-#        posts = Pitch.query.all()
-#        return posts
-   
+class Comment(UserMixin,db.Model):
+   __tablename__='comments'
+   id = db.Column(db.Integer,primary_key=True)
+   user_id = db.Column(db.Integer,db.ForeignKey('pitches.id'))
+   comment = db.Column(db.String(255))
+   username=db.Column(db.String(255))

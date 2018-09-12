@@ -12,8 +12,13 @@ class pitchForm(FlaskForm):
 
     category = RadioField('Category',choices=[("business","business"),("love","love"),("investment" ,"investment"),("science","science")],validators=[DataRequired()])
 
-    comments = StringField('Comments')
+    submit = SubmitField('submit')
 
+class commentForm(FlaskForm):
+    comment = StringField('Pitch')
+
+    username = StringField('Username')
+    
     submit = SubmitField('submit')
 
 class LoginForm(FlaskForm):

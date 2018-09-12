@@ -1,5 +1,5 @@
 
-
+{% import "bootstrap/wtf.html" as wtf %}
 {% block content %}
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
@@ -39,6 +39,8 @@
                         {% for love in love %}
                         {{love.pitch}}
                         <br>
+                        {{wtf.quick_form(Comment_form)}}
+                        {{comment}} by {{username}}
                         {% endfor %}
                         
                         </div>
@@ -49,6 +51,8 @@
                         {% for business in business %}
                         {{business.pitch}}
                         <br>
+                        {{wtf.quick_form(Comment_form)}}
+                        {{comment}} by {{username}}
                         {% endfor %}
                         
                         </div>
@@ -59,6 +63,8 @@
                         {% for science in science %}
                         {{science.pitch}}
                         <br>
+                        {{wtf.quick_form(Comment_form)}}
+                        {{comment}} by {{username}}
                         {% endfor %}
                         
                         </div>
@@ -69,9 +75,12 @@
                         {% for investment in investment %}
                         {{investment.pitch}}
                         <br>
+                        {{wtf.quick_form(Comment_form)}}
+                        {% for comment in comment %}
+                        {{comment}} {% endfor %} by {% for username in username %} {{username}} {% endfor %} 
                         {% endfor %}
                         
-                              </div>
+                        </div>
                       </div>
                     {%endblock%}
              </div>
