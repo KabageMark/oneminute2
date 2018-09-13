@@ -32,38 +32,37 @@
 
 
 <div class="container">
-    <center>
-    <form method="POST" action="">
+<center>    
+    <form method="POST" action="" class="col-xs-4">
         {{form.hidden_tag()}}
-        <fieldset class="form-group col-xs-3">
-            <legend class="border-bottom mb-4">join Today</legend>
+        
             <div class="form-group" >
                 {{form.username.label}}
                 <br>
                 {{form.username(class="form-control")}}
             </div>
      
-         <div class="form-group">
-             {{form.email.label}}
-             <br>
-             {{form.email(class="form-control")}}
-         </div>
-     
-         
-         <div class="form-group">
-             {{form.password.label}}
-             <br>
-             {{form.password (class="form-control")}}
-         </div>
-
-         <div class="form-group">
-            {{form.password_confirm.label}}
-            <br>
-            {{form.password_confirm(class="form-control")}}
-        </div>
+            <div class="form-group">
+                {{form.email.label}}
+                <br>
+                {{form.email(class="form-control")}}
+            </div>
         
-        <div>
-            {{form.submit (class="btn")}}
+         
+            <div class="form-group">
+                {{form.password.label}}
+                <br>
+                {{form.password (class="form-control")}}
+            </div>
+
+            <div class="form-group">
+                {{form.password_confirm.label}}
+                <br>
+                {{form.password_confirm(class="form-control")}}
+            </div>
+        
+            <div>
+                {{form.submit (class="btn btn-success")}}
             </div>
     </form>
 </div>
@@ -73,6 +72,6 @@
        Already have an account? <a class="ml-2" href="{{url_for ('main.login')}}">sign in </a>
      </small>
 </div>
-</fieldset>
-
-{% endblock %} 
+</center>
+{% endblock %}
+ 

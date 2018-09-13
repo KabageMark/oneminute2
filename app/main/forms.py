@@ -15,10 +15,10 @@ class pitchForm(FlaskForm):
     submit = SubmitField('submit')
 
 class commentForm(FlaskForm):
-    comment = StringField('Pitch')
+    comment = StringField('Comment')
 
     username = StringField('Username')
-    
+
     submit = SubmitField('submit')
 
 class LoginForm(FlaskForm):

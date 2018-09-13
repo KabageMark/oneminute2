@@ -43,8 +43,14 @@
             <div class="form-group">
                 {{form.password.label}}
                 <br>
+                <div class="alert alert-danger">
+                    {% for message in get_flashed_messages()%}
+                    {{message}}
+                    {%endfor%}
+                    </div>
                 {{form.password (class="form-control")}}
             </div>
+         
            </fieldset>
            <div class="form-group">
                {{form.submit(class="btn")}}
@@ -55,10 +61,8 @@
   <center>
    <div class="border-top pt-3">
         <small class="text-muted">
-         <a class="ml-2" href="{{url_for ('main.register')}}">sign up </a>
-        </small>
-        <small>
-         <a class="ml-2" href="#">forgot password?</a>  
+        <p>Dont have an Account?</p>
+        <a class="ml-2" href="{{url_for ('main.register')}}">sign up </a>
         </small>
    </div>
   </center>

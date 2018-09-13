@@ -18,6 +18,7 @@
                     <div class="mdl-layout-spacer"></div>
                     <!-- Navigation. We hide it in small screens. -->
                     <nav class="mdl-navigation mdl-layout--large-screen-only">
+                      <a class="mdl-navigation__link" href="http://127.0.0.1:5000/home/pitch">Home</a>
                       <a class="mdl-navigation__link" href="http://127.0.0.1:5000/">sign in</a>
                       <a class="mdl-navigation__link" href="http://127.0.0.1:5000/register">sign up</a>
                     </nav>
@@ -34,6 +35,7 @@
                       
                         <div class="mdl-tabs__panel is-active" id="love-panel">
                         <div class="jumbotron">
+                        <center><img src="/static/img/logo.jpg" alt=""></center>
                         <center><h1>have anything lovely to say...?</h1></center>    
                         </div>       
                         {% for love in love %}
@@ -46,6 +48,7 @@
                         </div>
                         <div class="mdl-tabs__panel" id="Business-panel">
                         <div class="jumbotron">
+                        <center><img src="/static/img/logo1.jpg" alt=""></center>
                         <center><h1>What are you selling...?</h1></center>    
                         </div>       
                         {% for business in business %}
@@ -58,6 +61,7 @@
                         </div>
                         <div class="mdl-tabs__panel" id="Science-panel">
                         <div class="jumbotron">
+                        <center><img src="/static/img/logo2.jpg" alt=""></center>
                         <center><h1>Spread the word of science...?</h1></center>  
                         </div>   
                         {% for science in science %}
@@ -70,6 +74,7 @@
                         </div>
                         <div class="mdl-tabs__panel" id="Investment-panel">
                         <div class="jumbotron">
+                        <center><img src="/static/img/logo3.jpg" alt=""></center>
                         <center><h1>have anything to invest in...?</h1></center>     
                         </div>   
                         {% for investment in investment %}
