@@ -20,25 +20,16 @@
                       <a class="mdl-navigation__link" href="http://127.0.0.1:5000/home/">View picthes</a>
                       <a class="mdl-navigation__link" href="http://127.0.0.1:5000">sign in</a>
                       <a class="mdl-navigation__link" href="http://127.0.0.1:5000/register">sign up</a>
+                      <span>
+                          <a class="mdl-navigation__link" href="http://127.0.0.1:5000"><i class="material-icons mdl-list__item-icon">person</i></a>
+                      
+                      </span>
                     </nav>
                   </div>
                 </header>
                 <div>
-                 <div class="form-group">
-                    {{form.pitch.label}}
-                    <br>
-                    {{form.pitch(class="form-control input-lg")}}
-                </div>
-                <div class="form-group">
-                    {{form.pitch.category}}
-                    <br>
-                    {{form.category}}
-                </div>
-                <div class="form-group">
-                    {{form.pitch.category}}
-                    <br>
-                    {{form.submit(class="btn btn-success")}}
-                </div>
+              <div>
+                {{wtf.quick_form(form)}}
             </div>
 
 {%endblock%}
