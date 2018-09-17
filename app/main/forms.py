@@ -1,9 +1,11 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField , SubmitField,BooleanField,RadioField
+from wtforms import StringField, PasswordField , SubmitField,BooleanField,RadioField,TextAreaField
 from wtforms.validators import DataRequired,Required, Length , Email , EqualTo
 from ..models import User,Pitch
 
-
+class UpdateProfile(FlaskForm):
+    bio = TextAreaField('Tell us about you.',validators = [Required()])
+    submit = SubmitField('Submit')
 
 
 

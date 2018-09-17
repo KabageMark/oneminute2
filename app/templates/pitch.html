@@ -21,7 +21,7 @@
                       <a class="mdl-navigation__link" href="http://127.0.0.1:5000">sign in</a>
                       <a class="mdl-navigation__link" href="http://127.0.0.1:5000/register">sign up</a>
                       <span>
-                          <a class="mdl-navigation__link" href="http://127.0.0.1:5000"><i class="material-icons mdl-list__item-icon">person</i></a>
+                          <a class="mdl-navigation__link" href="{{url_for('main.profile',uname=current_user.username)}}"><i class="material-icons mdl-list__item-icon">person</i></a>
                       
                       </span>
                     </nav>

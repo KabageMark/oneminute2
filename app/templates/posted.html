@@ -23,6 +23,8 @@
                       <a class="mdl-navigation__link" href="http://127.0.0.1:5000/home/pitch">Home</a>
                       <a class="mdl-navigation__link" href="http://127.0.0.1:5000/">sign in</a>
                       <a class="mdl-navigation__link" href="http://127.0.0.1:5000/register">sign up</a>
+                      <a class="mdl-navigation__link" href="{{url_for('main.profile',uname=current_user.username)}}"><i class="material-icons mdl-list__item-icon">person</i></a>
+
                     </nav>
                   </div>
                 </header>
@@ -34,20 +36,27 @@
                             <a href="#Science-panel" class="mdl-tabs__tab">Science</a>
                             <a href="#Investment-panel" class="mdl-tabs__tab">Investment</a>
                         </div>
+
                       
+
+
+
                         <div class="mdl-tabs__panel" id="love-panel">
                         <div class="jumbotron">
                         <center><img src="/static/img/logo2.png" alt=""></center>
                         <center><h1>have anything lovely to say...?</h1></center>    
                         </div>       
                         {% for love in love %}
-                        <div id="pitch1"><center>{{love.pitch}}</center></div>
+                        <div id="pitch1"><center><i>{{love.pitch}}</i></center></div>
                         <br>
                         <center><span><button class="glyphicon glyphicon-thumbs-up"></button>    <button class="glyphicon glyphicon-thumbs-down"></button></span></center>
                         
-                        <div class="col-xs-3">
+                        <div>
                         {{wtf.quick_form(Comment_form)}}
-                        {{comment}} by {{username}}
+                        {% endfor %}
+
+                        {% for comment in comment %}
+                                                                                                                                                                                                                                  {{comment}}
                         {% endfor %}
                         </div>
                       </div>
@@ -59,12 +68,14 @@
                         <center><h1>What are you selling...?</h1></center>    
                         </div>       
                         {% for business in business %}
-                        <div id="pitch1"><center>{{business.pitch}}</center></div>
+                        <div id="pitch1"><center><i>{{business.pitch}}</i></center></div>
                         <br>
-                        <center><span><i class="material-icons">thumb_up</i> <i class="material-icons">thumb_down</i></span></center>
+                        <center><button class="glyphicon glyphicon-thumbs-up"></button>    <button class="glyphicon glyphicon-thumbs-down"></button></center>
                         <div class="col-xs-3"> 
                         {{wtf.quick_form(Comment_form)}}
-                        {{comment}} by {{username}}
+                        {% endfor %}
+                        {% for comment in comment %}
+                        {{comment}}
                         {% endfor %}
                         </div>
                         </div>
@@ -73,15 +84,18 @@
                         <div class="mdl-tabs__panel" id="Science-panel">
                         <div class="jumbotron">
                         <center><img src="/static/img/logo2.jpg" alt=""></center>
-                        <center><h1>Spread the word of science...?</h1></center>  
-                        </div>   
+                        <center><h1>Spread the word of science...?</h1></center>
+                        </div>
                         {% for science in science %}
-                        <div id="pitch1"><center>{{science.pitch}}</center></div>
+                        <div id="pitch1"><center><i>{{science.pitch}}</i></center></div>
                         <br>
-                        <center><span><i class="material-icons">thumb_up</i> <i class="material-icons">thumb_down</i></span></center>
-                        <div class="col-xs-3">
-                        {{wtf.quick_form(Comment_form)}}
-                        {{comment}} by {{username}}
+                        <center><button class="glyphicon glyphicon-thumbs-up"></button>    <button class="glyphicon glyphicon-thumbs-down"></button></center>
+                        </div>
+                        <div class="col-xs-3"> 
+                        <small>{{wtf.quick_form(Comment_form)}}</small>
+                        {% endfor %}
+                        {% for comment in comment %}
+                        <small>{{comment}}</small>
                         {% endfor %}
                         </div>
                       </div>
@@ -93,19 +107,19 @@
                         <center><h1>have anything to invest in...?</h1></center>     
                         </div>   
                         {% for investment in investment %}
-                        <div id="pitch1"><center>{{investment.pitch}}</center></div>
+                        <div id="pitch1"><center><i>{{investment.pitch}}</i></center></div>
                         <br>
-                        <center><span><i class="material-icons">thumb_up</i> <i class="material-icons">thumb_down</i></span></center>
+                        <center><button class="glyphicon glyphicon-thumbs-up"></button>    <button class="glyphicon glyphicon-thumbs-down"></button></center>
                         <div class="col-xs-3">
                         {{wtf.quick_form(Comment_form)}}
-                        {% for comment in comment %}
-                        {{comment}} {% endfor %} by {% for username in username %} {{username}} {% endfor %} 
                         {% endfor %}
+                        {% for comment in comment %}
+                        {{comment}}{% endfor %}
                         </div>
 
                         </div>
-                      </div>
-                    </div>
-                    {%endblock%}
+                        </div>
+                    </main>
+                  {%endblock%}
              
   
